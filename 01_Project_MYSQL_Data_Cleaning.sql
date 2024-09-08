@@ -1,6 +1,6 @@
 # World Life Expectancy Project (Data Cleaning)
 # This project was offered by analystbuilder.com from the MySQL for Data Analytics online course presented by "Alex the analyst"
-# world_life_expectancy_stage this is the original table, world_life_expectancy is the updated table
+# world_life_expectancy_stage this is the original table, world_life_expectancy is the updated table for comparative purposes 
 
 SELECT *
 FROM world_life_expectancy_stage
