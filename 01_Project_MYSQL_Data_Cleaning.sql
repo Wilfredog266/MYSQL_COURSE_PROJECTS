@@ -17,7 +17,7 @@ GROUP BY
 	Country, 
 	Year, 
 	CONCAT(Country, Year) 
-# We can also order the COUNT() in DESC and will see the numbers greater than 1 at the top 
+# We can also order the COUNT() in DESC and we will see the numbers greater than 1 at the top 
 HAVING COUNT(CONCAT(Country, Year)) > 1 # We filter the aggregate function with a HAVING CLAUSE to find all the duplicates 
 ;
 
