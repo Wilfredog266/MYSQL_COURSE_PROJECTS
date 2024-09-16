@@ -6,11 +6,11 @@ SELECT *
 FROM world_life_expectancy_stage
 ;
 
-# Here I am trying to figure out if we have any duplicates in the table to then delete them 
+# Here I am trying to figure out if we have any duplicates in the table to delete them then 
 SELECT 
 	Country, 
 	Year, 
-	CONCAT(Country, Year), # This is to see the country an year together which makes it easier to see any duplicated year 
+	CONCAT(Country, Year), # This is to see the country and year together which makes it easier to see any duplicated year 
 	COUNT(CONCAT(Country, Year)) # We count the number of rows in the CONCAT() and group it to see if any show '2' meaning it is duplicated 
 FROM world_life_expectancy_stage
 GROUP BY 
@@ -21,7 +21,7 @@ GROUP BY
 HAVING COUNT(CONCAT(Country, Year)) > 1 # We filter the aggregate function with a HAVING CLAUSE to find all the duplicates 
 ;
 
-# We need to find the unique Row_ID for each of the duplicates to then remove them with an UPDATE
+# We need to find the unique Row_ID for each of the duplicates to remove them with an UPDATE then
 # We will use a PARTITION BY with ROW_NUMBER
 
 SELECT 
@@ -47,7 +47,7 @@ WHERE Row_Num > 1
 ;
 
 # Now we have the Row_ID of the duplicate rows and can delete the duplicate rows 
-# It is good practice to always have an original copy of any table we are working with
+# It is good practice always to have an original copy of any table we are working with
 
 DELETE 
 FROM world_life_expectancy
@@ -64,7 +64,7 @@ WHERE #Using a subquery within a subquery in the WHERE clause, with the query we
 		WHERE Row_Num > 1
 )
 ;
-# We did this workaround because there was no primary key in this table so we had to create our own unique value column 
+# We did this workaround because there was no primary key in this table so we had to create our unique value column 
 # We have successfully removed the duplicates 
 
 
